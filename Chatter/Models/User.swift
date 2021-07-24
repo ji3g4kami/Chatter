@@ -35,7 +35,7 @@ func imageUrlForName(_ name: String) -> URL {
   return URL(string: "https://api.hello-avatar.com/adorables/150/" + name.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics)! + ".png")!
 }
 
-class User: Object {
+@objcMembers class User: Object {
 
   // MARK: - Init
   convenience init(name: String) {

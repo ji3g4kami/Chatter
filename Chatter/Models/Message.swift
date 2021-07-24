@@ -31,7 +31,7 @@
 import Foundation
 import RealmSwift
 
-class Message: Object {
+@objcMembers class Message: Object {
   
   // MARK: - Init
   convenience init(user: User, message: String) {

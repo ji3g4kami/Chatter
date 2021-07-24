@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,9 +19,9 @@
 		14A294F726AC426100E261C0 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294EB26AC426100E261C0 /* FeedTableViewCell.swift */; };
 		14A294F826AC426100E261C0 /* ChatterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294ED26AC426100E261C0 /* ChatterAPI.swift */; };
 		14A294F926AC426100E261C0 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294EE26AC426100E261C0 /* DataController.swift */; };
-		14A294FA26AC426100E261C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294F026AC426100E261C0 /* Message.swift */; };
-		14A294FB26AC426100E261C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A294F126AC426100E261C0 /* User.swift */; };
 		14A294FE26AC427A00E261C0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14A294FC26AC427A00E261C0 /* Main.storyboard */; };
+		14A2950226AC69AE00E261C0 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2950026AC69AE00E261C0 /* Message.swift */; };
+		14A2950326AC69AE00E261C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A2950126AC69AE00E261C0 /* User.swift */; };
 		A5F4AB341D2E06320F1B43FC /* Pods_Chatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573767C730752D59A5AA62B2 /* Pods_Chatter.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,9 +40,9 @@
 		14A294EB26AC426100E261C0 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		14A294ED26AC426100E261C0 /* ChatterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatterAPI.swift; sourceTree = "<group>"; };
 		14A294EE26AC426100E261C0 /* DataController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		14A294F026AC426100E261C0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		14A294F126AC426100E261C0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		14A294FD26AC427A00E261C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14A2950026AC69AE00E261C0 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		14A2950126AC69AE00E261C0 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		573767C730752D59A5AA62B2 /* Pods_Chatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Chatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0CA959868E76B9E0249ED63 /* Pods-Chatter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.release.xcconfig"; path = "Target Support Files/Pods-Chatter/Pods-Chatter.release.xcconfig"; sourceTree = "<group>"; };
 		E8E67CABA226234B401B3AB0 /* Pods-Chatter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Chatter.debug.xcconfig"; path = "Target Support Files/Pods-Chatter/Pods-Chatter.debug.xcconfig"; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 				14A294C326AC3FA500E261C0 /* AppDelegate.swift */,
 				14A294C526AC3FA500E261C0 /* SceneDelegate.swift */,
 				14A294CC26AC3FA600E261C0 /* Assets.xcassets */,
-				14A294EF26AC426100E261C0 /* Models */,
+				14A294FF26AC69AE00E261C0 /* Models */,
 				14A294EC26AC426100E261C0 /* Networking */,
 				14A294E126AC426100E261C0 /* View Controllers */,
 				14A294E926AC426100E261C0 /* Views */,
@@ -156,11 +156,11 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		14A294EF26AC426100E261C0 /* Models */ = {
+		14A294FF26AC69AE00E261C0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				14A294F026AC426100E261C0 /* Message.swift */,
-				14A294F126AC426100E261C0 /* User.swift */,
+				14A2950026AC69AE00E261C0 /* Message.swift */,
+				14A2950126AC69AE00E261C0 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -171,7 +171,6 @@
 				E8E67CABA226234B401B3AB0 /* Pods-Chatter.debug.xcconfig */,
 				A0CA959868E76B9E0249ED63 /* Pods-Chatter.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -295,9 +294,9 @@
 				14A294F426AC426100E261C0 /* FeedTableViewController.swift in Sources */,
 				14A294F826AC426100E261C0 /* ChatterAPI.swift in Sources */,
 				14A294F926AC426100E261C0 /* DataController.swift in Sources */,
-				14A294FA26AC426100E261C0 /* Message.swift in Sources */,
+				14A2950226AC69AE00E261C0 /* Message.swift in Sources */,
 				14A294F526AC426100E261C0 /* ComposeViewController.swift in Sources */,
-				14A294FB26AC426100E261C0 /* User.swift in Sources */,
+				14A2950326AC69AE00E261C0 /* User.swift in Sources */,
 				14A294F626AC426100E261C0 /* UITableView+Ext.swift in Sources */,
 				14A294F326AC426100E261C0 /* ProfileViewController.swift in Sources */,
 				14A294C626AC3FA500E261C0 /* SceneDelegate.swift in Sources */,
