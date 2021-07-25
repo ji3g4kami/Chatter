@@ -54,7 +54,13 @@ class DataController {
 
   @objc fileprivate func fetch() {
     api.getMessages { jsonObjects in
-
+      let newMessages = jsonObjects.map { object in
+        return Message(value: object)
+      }
+      let realm = try! Realm()
+      try! realm.write {
+        realm.add(newMessages)
+      }
     }
   }
 

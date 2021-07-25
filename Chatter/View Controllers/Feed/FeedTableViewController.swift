@@ -41,6 +41,7 @@ class FeedTableViewController: UITableViewController {
 
     let realm = try! Realm()
     User.defaultUser(in: realm)
+    print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
     
     
     dataController = DataController(api: StubbedChatterAPI())
