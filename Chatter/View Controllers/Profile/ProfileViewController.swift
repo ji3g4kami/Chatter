@@ -37,22 +37,27 @@ class ProfileViewController: UIViewController {
   @IBOutlet weak var statsLabel: UILabel!
   @IBOutlet weak var photo: UIImageView!
   
-  private var sentMessages: Results<Message>!
+  private var user: User!
+  private var userToken: NotificationToken?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     let realm = try! Realm()
     let user = User.defaultUser(in: realm)
-    sentMessages = realm.objects(Message.self)
-      .filter("name = %@", user.name)
+    userToken = user.observe { [weak self] change in
+      switch change {
+      case .change(_, let properties):
+        if let index = properties.firstIndex(where: { $0.name == "sent" }),
+           let nr = properties[index].newValue as? Int {
+          self?.updateUI(messageCount: nr)
+        }
+      default:
+        break
+      }
+    }
 
     photo.kf.setImage(with: imageUrlForName("me"))
-  }
-
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    updateUI(messageCount: sentMessages.count)
   }
 
   private func updateUI(messageCount: Int) {
