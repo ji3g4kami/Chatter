@@ -67,7 +67,14 @@ class DataController {
   // MARK: - post new message
 
   func postMessage(_ message: String) {
-
+    let realm = try! Realm()
+    let user = User.defaultUser(in: realm)
+    
+    let new = Message(user: user, message: message)
+    try! realm.write {
+      realm.add(new)
+    }
+    
 
     /* let newId = new.id
      api.postMessage(new, completion: {[weak self] _ in

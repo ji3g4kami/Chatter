@@ -36,16 +36,23 @@ class ProfileViewController: UIViewController {
 
   @IBOutlet weak var statsLabel: UILabel!
   @IBOutlet weak var photo: UIImageView!
+  
+  private var sentMessages: Results<Message>!
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let realm = try! Realm()
+    let user = User.defaultUser(in: realm)
+    sentMessages = realm.objects(Message.self)
+      .filter("name = %@", user.name)
 
     photo.kf.setImage(with: imageUrlForName("me"))
   }
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    updateUI(messageCount: 0)
+    updateUI(messageCount: sentMessages.count)
   }
 
   private func updateUI(messageCount: Int) {

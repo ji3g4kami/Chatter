@@ -34,7 +34,7 @@ import RealmSwift
 class FeedTableViewController: UITableViewController {
 
   private var dataController: DataController!
-  fileprivate var messages = [Message]()
+  fileprivate var messages: Results<Message>!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -43,9 +43,11 @@ class FeedTableViewController: UITableViewController {
     User.defaultUser(in: realm)
     print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0])
     
+    messages = realm.objects(Message.self)
+      .sorted(byKeyPath: "timestamp", ascending: false)
     
     dataController = DataController(api: StubbedChatterAPI())
-    dataController.startFetchingMessages()
+//    dataController.startFetchingMessages()
   }
 
   @IBAction func refresh() {

@@ -50,13 +50,14 @@ class FeedTableViewCell: UITableViewCell {
   func configureWithMessage(_ message: Message) {
     self.message = message
 
-    //        nameLabel.text = message.name
-    //        messageLabel.text = message.message
-    //        likeButton.isSelected = message.isFavorite
-    //        photoView.kf.setImage(with: message.photoUrl)
+    nameLabel.text = message.name
+    messageLabel.text = message.message
+    likeButton.isSelected = message.isFavorite
+    photoView.kf.setImage(with: message.photoUrl)
   }
 
   @IBAction func toggleLike(_ sender: AnyObject) {
-    
+    message?.toggleFavorite()
+    likeButton.isSelected =  message!.isFavorite
   }
 }
