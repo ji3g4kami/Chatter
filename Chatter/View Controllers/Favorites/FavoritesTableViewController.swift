@@ -35,6 +35,7 @@ class FavoritesTableViewController: UITableViewController {
 
   fileprivate var messages: Results<Message>!
   let realm = try! Realm()
+  private var messagesToken: NotificationToken?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,12 +46,21 @@ class FavoritesTableViewController: UITableViewController {
     let user = User.defaultUser(in: realm)
     messages = user.messages
       .filter("isFavorite = true")
-    tableView.reloadData()
+    messagesToken = messages.observe { [weak self] changes in
+      guard let tableView = self?.tableView else { return }
+      switch changes {
+      case .initial:
+        tableView.reloadData()
+      case .update(_, let deletions, let insertions, let modifications):
+        tableView.applyChanges(deletions: deletions, insertions: insertions, updates: modifications)
+      case .error: break
+      }
+    }
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
-
+    messagesToken?.invalidate()
   }
 
   // MARK: - table view methods
