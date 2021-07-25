@@ -52,6 +52,10 @@ func imageUrlForName(_ name: String) -> URL {
     return imageUrlForName(self.name)
   }
 
+  // MARK: - Collections
+  let messages = List<Message>()
+  let outgoing = List<Message>()
+  
   // MARK: - Meta
   override static func primaryKey() -> String? {
     return "name"

@@ -42,9 +42,9 @@ class FavoritesTableViewController: UITableViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    messages = realm.objects(Message.self)
+    let user = User.defaultUser(in: realm)
+    messages = user.messages
       .filter("isFavorite = true")
-      .sorted(byKeyPath: "timestamp", ascending: false)
     tableView.reloadData()
   }
 

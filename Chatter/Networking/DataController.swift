@@ -58,8 +58,11 @@ class DataController {
         return Message(value: object)
       }
       let realm = try! Realm()
+      let me = User.defaultUser(in: realm)
       try! realm.write {
-        realm.add(newMessages)
+        for message in newMessages {
+          me.messages.insert(message, at: 0)
+        }
       }
     }
   }
@@ -72,17 +75,26 @@ class DataController {
     
     let new = Message(user: user, message: message)
     try! realm.write {
-      realm.add(new)
+      user.outgoing.append(new)
     }
     
-
-    /* let newId = new.id
+     let newId = new.id
      api.postMessage(new, completion: {[weak self] _ in
-     self?.didSentMessage(id: newId)
-     }) */
+        self?.didSentMessage(id: newId)
+     })
   }
 
   private func didSentMessage(id: String) {
-
+    // 因為把 Realm 當作 Single sorce of true, 所以即便 user.message 還是回 Realm 讀取
+    let realm = try! Realm()
+    let user = User.defaultUser(in: realm)
+    if let sentMessage = realm.object(ofType: Message.self, forPrimaryKey: id),
+       let index = user.outgoing.index(of: sentMessage) {
+      try! realm.write({
+        user.outgoing.remove(at: index)
+        user.messages.insert(sentMessage, at: 0)
+        user.sent += 1
+      })
+    }
   }
 }
